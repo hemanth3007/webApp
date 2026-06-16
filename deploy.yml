@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  
+    - name: Copy War File
+      copy:
+        src: target/webApp.war
+        dest: /opt/tomcat/webapps/webApp.war
+       
+    - name: Stop Tomcat
+      shell: /opt/tomcat/bin/shutdown.sh
+      ignore_errors: yes
+      
+    - name: Start Tomcat
+      shell: /opt/tomcat/bin/startup.sh
+      
