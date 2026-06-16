@@ -21,7 +21,7 @@ pipeline {
 		}
 		stage('Run Application') {
 			steps {
-				sudo sh 'ansible-playbook deploy.yml'
+				sh 'ansible-playbook deploy.yml'
 			}
 		}
 	}
