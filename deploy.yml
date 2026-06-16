@@ -6,8 +6,8 @@
   
     - name: Copy War File
       copy:
-        src: target/webApp.war
-        dest: /opt/tomcat/webapps/webApp.war
+        src: target/webApp-1.0-SNAPSHOT.war
+        dest: /opt/tomcat/webapps/webApp-1.0-SNAPSHOT.war
        
     - name: Stop Tomcat
       shell: /opt/tomcat/bin/shutdown.sh
