@@ -1,18 +1,21 @@
 ---
 - hosts: localhost
   connection: local
-
+  
   tasks:
   
-    - name: Copy War File
-      copy:
-        src: target/webApp-1.0-SNAPSHOT.war
-        dest: /opt/tomcat/webapps/webApp-1.0-SNAPSHOT.war
+   - name: Stop Tomcat
+     shell: sudo sh /opt/tomcat/bin/shutdown.sh
+     ignore_errors: yes
+     
+   - name: Wait for 5 seconds
+     pause:
+       seconds: 5
        
-    - name: Stop Tomcat
-      shell: /opt/tomcat/bin/shutdown.sh
-      ignore_errors: yes
-      
-    - name: Start Tomcat
-      shell: /opt/tomcat/bin/startup.sh
-      
+   - name: Copy War File
+     copy:
+       src: target/webApp-1.0-SNAPSHOT.war
+       dest: /opt/tomcat/webapps/webApp-1.0-SNAPSHOT.war
+       
+   - name: Start Tomcat
+     shell: sudo sh /opt/tomcat/bin/startup.sh
